@@ -13,10 +13,18 @@ class App extends Component {
     constructor(props){
         super();
         this.state = {
-            videos: []
+            videos: [],
+            selectedVideo: null
         };
-        _yt({key: API_KEY, term: 'surfboards'}, (response) => {
-           this.setState({videos:response});
+        this.search('hey brother');
+    }
+
+    search(term){
+        _yt({key: API_KEY, term: term}, (response) => {
+            this.setState({
+                videos:response,
+                selectedVideo:response[0]
+            });
         });
     }
 
@@ -24,8 +32,10 @@ class App extends Component {
         return (
             <div>
                 <SearchBar/>
-                <VideoDetail video={this.state.videos[0]}/>
-                <VideoList videos={this.state.videos}/>
+                <VideoDetail video={this.state.selectedVideo}/>
+                <VideoList
+                    onVideoSelect={selectedVideo => this.setState({selectedVideo})}
+                    videos={this.state.videos}/>
             </div>
         );
     }

@@ -12,7 +12,9 @@ class VideoList extends Component {
 
     render(){
         const videoItems = this.props.videos.map((video) => {
-            return <VideoListItem key={video.etag} video={video}/>
+            return <VideoListItem key={video.etag}
+                                  onVideoSelect={this.props.onVideoSelect}
+                                  video={video}/>
         });
         return (
             <section>
