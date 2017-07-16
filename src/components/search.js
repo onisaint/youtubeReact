@@ -5,18 +5,17 @@ class SearchBar extends Component {
     constructor(_p){
         super(_p);
         this.state = {
-            term: 'Helllo'
+            term: ''
         };
     }
     render(){
         return (
-            <section>
-                <label htmlFor="search">Search</label>
+            <section className="search-bar">
                 <input type="text"
                        id="search"
+                       placeholder="search"
                        value={this.state.term}
                        onChange={event => this.setState({term: event.target.value})}/>
-                <h1>{this.state.term}</h1>
             </section>
         );
     }
