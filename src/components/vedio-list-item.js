@@ -9,11 +9,29 @@ class VideoListItem extends Component {
     }
 
     render(){
+        const video = this.extract(this.props.video);
         return (
-            <li>
-                Videos
+            <li className="list-group-item">
+                <div className="video-list media">
+                    <div className="media-left">
+                        <img className="media-object" src={video.imageUrl} alt=""/>
+                    </div>
+
+                    <div className="media-body">
+                        <div className="media-heading">
+                            {video.title}
+                        </div>
+                    </div>
+                </div>
             </li>
         );
+    }
+
+    extract(video){
+        return {
+            imageUrl: video.snippet.thumbnails.default.url,
+            title: video.snippet.title
+        }
     }
 }
 
