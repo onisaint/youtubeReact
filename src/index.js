@@ -31,7 +31,7 @@ class App extends Component {
     render(){
         return (
             <div>
-                <SearchBar/>
+                <SearchBar onSearch={searchTerm => this.search(searchTerm)}/>
                 <VideoDetail video={this.state.selectedVideo}/>
                 <VideoList
                     onVideoSelect={selectedVideo => this.setState({selectedVideo})}
